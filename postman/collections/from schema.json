@@ -1,0 +1,1868 @@
+{
+	"info": {
+		"_postman_id": "660f7081-fe3e-46ac-9b68-e726ec3ae2be",
+		"name": "from schema",
+		"description": "This is a Zomato RESTful API. It gives you the freshest and most exhaustive restaurant content to power your applications with. It covers 1.5 million restaurants across 10,000 cities globally.This RESTful API searches for restaurants by name, cuisine, or location, a detailed information including ratings, location and cuisine. You can get free and instant access to restaurant information by requesting the [`access-key`](https://developers.zomato.com/api).\n\n# Concepts\n\nThe Zomato Web-API utilizes standard HTTP communication and uses REST concepts. Requests and responses contain JSON in the HTTP body. The character encoding is always UTF8. Ensure that your client is capable of handling SSL/TLS HTTP requests.\n\n**API-Key**\n\nAn API-Key is a long-lasting secret that represents a unique id. An authorized user can generate a key in Zomato-API for his usage. The user should place this secret in your application settings. Important: Keep this API-Key secret! The application then uses this api-key in each request that is made with our api.\n\n**Example HTTP Header**\n\n    Authorization: Bearer <API-Key or Access Token>\n    Accept: application/json\n# HTTP Request examples\nRequests that don’t have side-effects (and do not change anything) utilize\nthe `GET` method.\n\n**Read example**\n\n    GET /api/v2.1/categories\n    Host: developers.zomato.com\n    Authorization: Bearer 5ffb698e3d9a8ea8d51fb8847c216058\n    Accept: application/json\n# HTTP Response body\n\nEvery HTTP response is wrapped by a response body. You should evaluate the success value to check if the operation was successful. If there was a failure an error object will be returned. \n\nFor successful operations we will return the data for read operations. For read operations a corresponding object will be returned if the data is a array of multiple items.\n\nExample HTTP Response with single expected result or single affected entity\n\n    HTTP/2 200 OK\n    Content-Type: application/json\n\n    {\n        \"success\": true,\n        \"data\": {\n            \"id\": 1234,\n             ...\n        }\n    }\n  \n # Error handling\n\n\nEnsure to evalute the http status code and react on them accordingly. See table below. If there is an error code that is not 200, there might not be a response body.\n\nHowever if there is a response body `success` should be `false` and we return a error with additional information what went wrong. \n\n\nContact Support:\n Email: vivekraj3200@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "20117414-660f7081-fe3e-46ac-9b68-e726ec3ae2be"
+	},
+	"item": [
+		{
+			"name": "Get list of Categories",
+			"id": "b7899aff-e3d1-49e7-8d2f-954a83015797",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) Get a list of categories. List of all restaurants categorized under a particular restaurant type can be obtained using /Search API with Category ID as inputs.",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/categories",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "63634820-6d86-4786-8ad8-e51ea94a4d91",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Get a list of categories. List of all restaurants categorized under a particular restaurant type can be obtained using /Search API with Category ID as inputs.",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"category_id\": 3,\n  \"category_name\": \"Dine-out\"\n}"
+				},
+				{
+					"id": "6c121e3f-02c8-46a1-a244-0cc8f0c9be33",
+					"name": "Invalid Key.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) Get a list of categories. List of all restaurants categorized under a particular restaurant type can be obtained using /Search API with Category ID as inputs.",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Find the Zomato ID and other details for a city.",
+			"id": "dd120b9e-5dd0-4085-a88f-40c958a03d38",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/cities?q=eiusmod et dolore in laboris&lat=-98808562.94987081&lon=-98808562.94987081&city_ids=eiusmod et dolore in laboris&count=-13169233",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cities"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "eiusmod et dolore in laboris",
+							"description": "query by city name"
+						},
+						{
+							"key": "lat",
+							"value": "-98808562.94987081",
+							"description": "latitude"
+						},
+						{
+							"key": "lon",
+							"value": "-98808562.94987081",
+							"description": "longitude"
+						},
+						{
+							"key": "city_ids",
+							"value": "eiusmod et dolore in laboris",
+							"description": "comma separated city_id values"
+						},
+						{
+							"key": "count",
+							"value": "-13169233",
+							"description": "number of max results to display"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "034c45c4-4364-4186-90db-06cd05f02671",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cities?q=eiusmod et dolore in laboris&lat=-98808562.94987081&lon=-98808562.94987081&city_ids=eiusmod et dolore in laboris&count=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "city_ids",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "count",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"id\": 280,\n  \"name\": \"New York City, NY\",\n  \"country_id\": 216,\n  \"country_name\": \"United States\",\n  \"is_state\": false,\n  \"state_id\": 103,\n  \"state_name\": \"New York State\",\n  \"state_code\": \"NY\"\n}"
+				},
+				{
+					"id": "170f55e7-c3d6-4b61-8045-57c85322742c",
+					"name": "Invalid Key.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cities?q=eiusmod et dolore in laboris&lat=-98808562.94987081&lon=-98808562.94987081&city_ids=eiusmod et dolore in laboris&count=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "city_ids",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "count",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Returns Zomato Restaurant Collections in a City.",
+			"id": "8b6099f8-3c03-4414-82dc-5581e4019c3a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/collections?lat=-98808562.94987081&lon=-98808562.94987081&city_id=eiusmod et dolore in laboris&count=-13169233",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"collections"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						},
+						{
+							"key": "lon",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						},
+						{
+							"key": "city_id",
+							"value": "eiusmod et dolore in laboris",
+							"description": "id of the city for which collections are needed"
+						},
+						{
+							"key": "count",
+							"value": "-13169233",
+							"description": "number of max results to display"
+						}
+					]
+				},
+				"description": "List of all restaurants listed in any particular Zomato Collection can be obtained using the '/search' API with Collection ID and Zomato City ID as the input."
+			},
+			"response": [
+				{
+					"id": "7792e75a-bbe5-4d40-91df-ea743a7f85da",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/collections?lat=-98808562.94987081&lon=-98808562.94987081&city_id=eiusmod et dolore in laboris&count=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "city_id",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "count",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"collection_id\": 1,\n  \"title\": \"Trending this week\",\n  \"url\": \"https://www.zomato.com/new-york-city/top-restaurants\",\n  \"description\": \"The most popular restaurants in town this week\",\n  \"image_url\": \"https://b.zmtcdn.com/data/collections/e40960514831cb9b74c552d69eceee0f_1418387628_l.jpg\",\n  \"res_count\": 30,\n  \"share_url\": \"http://www.zoma.to/c-280/1\"\n}"
+				},
+				{
+					"id": "251b8652-2cf6-496b-ba6a-24c858624a7c",
+					"name": "Invalid city_id.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/collections?lat=-98808562.94987081&lon=-98808562.94987081&city_id=eiusmod et dolore in laboris&count=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "city_id",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "count",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get a list of all cuisines of restaurants listed in a city.",
+			"id": "ac565cd2-45b8-4d8c-a7d9-847e88697281",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/cuisines?lat=-98808562.94987081&lon=-98808562.94987081&city_id=eiusmod et dolore in laboris",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cuisines"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						},
+						{
+							"key": "lon",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						},
+						{
+							"key": "city_id",
+							"value": "eiusmod et dolore in laboris",
+							"description": "id of the city for which cuisines are needed"
+						}
+					]
+				},
+				"description": "List of all restaurants serving a particular cuisine can be obtained using '/search' API with cuisine ID and location details."
+			},
+			"response": [
+				{
+					"id": "3c1a2320-8567-4a7a-954b-6aaed516ae25",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cuisines?lat=-98808562.94987081&lon=-98808562.94987081&city_id=eiusmod et dolore in laboris",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cuisines"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "city_id",
+									"value": "eiusmod et dolore in laboris"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"cuisine_id\": 25,\n  \"cuisine_name\": \"string\"\n}"
+				},
+				{
+					"id": "95e7172f-507a-45e9-9d8a-e5956a882aa9",
+					"name": "Invalid Key.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cuisines?lat=-98808562.94987081&lon=-98808562.94987081&city_id=eiusmod et dolore in laboris",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cuisines"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "city_id",
+									"value": "eiusmod et dolore in laboris"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get a list of restaurant types in a city.",
+			"id": "86c95a0f-d217-44cc-90b2-ff3989d2cefb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/establishments?lat=-98808562.94987081&lon=-98808562.94987081&city_id=eiusmod et dolore in laboris",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"establishments"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						},
+						{
+							"key": "lon",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						},
+						{
+							"key": "city_id",
+							"value": "eiusmod et dolore in laboris",
+							"description": "id of the city"
+						}
+					]
+				},
+				"description": "List of all restaurants categorized under a particular restaurant type can obtained using /Search API with Establishment ID and location details as inputs."
+			},
+			"response": [
+				{
+					"id": "041d82de-7f22-4fe4-bd54-8d201216d30a",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/establishments?lat=-98808562.94987081&lon=-98808562.94987081&city_id=eiusmod et dolore in laboris",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"establishments"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "city_id",
+									"value": "eiusmod et dolore in laboris"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"establishment_id\": 31,\n  \"establishment_name\": \"Bakery\"\n}"
+				},
+				{
+					"id": "c1d69e8e-8f1d-4c48-ae0e-8e1e75b78650",
+					"name": "Invalid API-Key.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/establishments?lat=-98808562.94987081&lon=-98808562.94987081&city_id=eiusmod et dolore in laboris",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"establishments"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "city_id",
+									"value": "eiusmod et dolore in laboris"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get location details based on coordinates",
+			"id": "0f4a60e0-6dd8-40b9-8ce0-bc0fb013f718",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/geocode?lat=-98808562.94987081&lon=-98808562.94987081",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"geocode"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						},
+						{
+							"key": "lon",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						}
+					]
+				},
+				"description": "Get Foodie and Nightlife Index, list of popular cuisines and nearby restaurants around the given coordinates."
+			},
+			"response": [
+				{
+					"id": "69862ab3-1226-4d91-9983-03083b230cb2",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/geocode?lat=-98808562.94987081&lon=-98808562.94987081",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"geocode"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"locality\": {\n    \"entity_type\": \"group\",\n    \"entity_id\": 36932,\n    \"title\": \"Chelsea Market, Chelsea, New York City\",\n    \"latitude\": 40.742051,\n    \"longitude\": -74.004821,\n    \"city_id\": 280,\n    \"city_name\": \"New York City\",\n    \"country_id\": 216,\n    \"country_name\": \"United States\"\n  },\n  \"popularity\": {\n    \"popularity\": 4.92,\n    \"nightlife_index\": 4.95,\n    \"top_cuisines\": \"cafe\"\n  },\n  \"link\": \"https://www.zomato.com/new-york-city/chelsea-restaurants\",\n  \"nearby_restaurants\": {\n    \"id\": 16774318,\n    \"name\": \"Otto Enoteca & Pizzeria\",\n    \"url\": \"https://www.zomato.com/new-york-city/otto-enoteca-pizzeria-greenwich-village\",\n    \"location\": {\n      \"address\": \"15th Avenue, New York, NY 10003\",\n      \"locality\": \"Greenwich Village\",\n      \"city\": \"New York City\",\n      \"latitude\": 40.73201,\n      \"longitude\": -73.996155,\n      \"zipcode\": 10003,\n      \"country_id\": 216\n    },\n    \"average_cost_for_two\": 60,\n    \"price_range\": 2,\n    \"currency\": \"$\",\n    \"thumb\": \"https://b.zmtcdn.com/data/pictures/chains/8/16774318/a54deb9e4dbb79dd7c8091b30c642077_featured_thumb.png\",\n    \"featured_image\": \"https://d.zmtcdn.com/data/pictures/chains/8/16774318/a54deb9e4dbb79dd7c8091b30c642077_featured_v2.png\",\n    \"photos_url\": \"https://www.zomato.com/new-york-city/otto-enoteca-pizzeria-greenwich-village/photos#tabtop\",\n    \"menu_url\": \"https://www.zomato.com/new-york-city/otto-enoteca-pizzeria-greenwich-village/menu#tabtop\",\n    \"events_url\": \"https://www.zomato.com/new-york-city/otto-enoteca-pizzeria-greenwich-village/menu#tabtop\",\n    \"user_rating\": {\n      \"aggregate_rating\": 3.7,\n      \"rating_text\": \"Very Good\",\n      \"rating_color\": \"5BA829\",\n      \"votes\": 1046\n    },\n    \"has_online_delivery\": 0,\n    \"is_delivering_now\": 0,\n    \"has_table_booking\": 0,\n    \"deeplink\": \"zomato://r/16774318\",\n    \"cuisines\": \"cafe\",\n    \"all_reviews_count\": 15,\n    \"photos_count\": 18,\n    \"phone_numbers\": -17078425.441486984,\n    \"photos\": {\n      \"id\": \"u_MjA5MjY1OTk5OT\",\n      \"url\": \"https://b.zmtcdn.com/data/reviews_photos/c15/9eb13ceaf6e90129c276ce6ff980bc15_1435111695_640_640_thumb.JPG\",\n      \"thumb_url\": \"https://b.zmtcdn.com/data/reviews_photos/c15/9eb13ceaf6e90129c276ce6ff980bc15_1435111695_200_thumb.JPG\",\n      \"user\": {\n        \"name\": \"John Doe\",\n        \"zomato_handle\": \"John\",\n        \"foodie_level\": \"Super Foodie\",\n        \"foodie_level_num\": 9,\n        \"foodie_color\": \"f58552\",\n        \"profile_url\": \"https://www.zomato.com/john\",\n        \"profile_deeplink\": \"zoma.to/u/1170245\",\n        \"profile_image\": \"string\"\n      }\n    }\n  }\n}"
+				},
+				{
+					"id": "c98c34be-6403-4539-9aa2-b1c198cfae5d",
+					"name": "Invalid API-Key.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/geocode?lat=-98808562.94987081&lon=-98808562.94987081",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"geocode"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Search for locations.",
+			"id": "2e58f748-9040-417e-9261-8e47950325c7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/locations?query=-13169233&lat=-98808562.94987081&lon=-98808562.94987081&cunt=-13169233",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"locations"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "-13169233",
+							"description": "(Required) suggestion for location name"
+						},
+						{
+							"key": "lat",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						},
+						{
+							"key": "lon",
+							"value": "-98808562.94987081",
+							"description": "latitude / longitude of any point within a city"
+						},
+						{
+							"key": "cunt",
+							"value": "-13169233",
+							"description": "max number of results to fetch"
+						}
+					]
+				},
+				"description": "Search for Zomato locations by keyword. Provide coordinates to get better search results."
+			},
+			"response": [
+				{
+					"id": "acbd30ef-b5a8-412e-ad6b-983f40bffac8",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/locations?query=-13169233&lat=-98808562.94987081&lon=-98808562.94987081&cunt=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"locations"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "-13169233"
+								},
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "cunt",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"id": "356fa159-bd6e-4dff-a594-ec0c1d8c24c8",
+					"name": "Invalid API-Key.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/locations?query=-13169233&lat=-98808562.94987081&lon=-98808562.94987081&cunt=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"locations"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "-13169233"
+								},
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "cunt",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get Zomato location details.",
+			"id": "5cc07973-480d-496a-8bed-8d2598eea547",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/location_details?entity_id=-13169233&entity_type=eiusmod et dolore in laboris",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"location_details"
+					],
+					"query": [
+						{
+							"key": "entity_id",
+							"value": "-13169233",
+							"description": "(Required) location id obtained from locations api"
+						},
+						{
+							"key": "entity_type",
+							"value": "eiusmod et dolore in laboris",
+							"description": "(Required) location type obtained from locations api"
+						}
+					]
+				},
+				"description": "Get Foodie Index, Nightlife Index, Top Cuisines and Best rated restaurants in a given location"
+			},
+			"response": [
+				{
+					"id": "fd1e3314-1aa4-4e79-8dba-0a9fc07702bb",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/location_details?entity_id=-13169233&entity_type=eiusmod et dolore in laboris",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"location_details"
+							],
+							"query": [
+								{
+									"key": "entity_id",
+									"value": "-13169233"
+								},
+								{
+									"key": "entity_type",
+									"value": "eiusmod et dolore in laboris"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"entity_type\": \"group\",\n  \"entity_id\": 36932,\n  \"title\": \"Chelsea Market, Chelsea, New York City\",\n  \"latitude\": 40.742051,\n  \"longitude\": -7174403,\n  \"city_id\": 280,\n  \"city_name\": \"New York City\",\n  \"country_id\": 216,\n  \"country_name\": \"United States\"\n}"
+				},
+				{
+					"id": "aa278258-0ef6-4b20-a062-c7290cbd4c2c",
+					"name": "Invalid API-Key.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/location_details?entity_id=-13169233&entity_type=eiusmod et dolore in laboris",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"location_details"
+							],
+							"query": [
+								{
+									"key": "entity_id",
+									"value": "-13169233"
+								},
+								{
+									"key": "entity_type",
+									"value": "eiusmod et dolore in laboris"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get restaurant details.",
+			"id": "ea09a517-ecb1-46ba-aa93-54978581de61",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/restaurant?res_id=-13169233",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurant"
+					],
+					"query": [
+						{
+							"key": "res_id",
+							"value": "-13169233",
+							"description": "(Required) id of restaurant whose details are requested"
+						}
+					]
+				},
+				"description": "Get detailed restaurant information using Zomato restaurant ID. Partner Access is required to access photos and reviews."
+			},
+			"response": [
+				{
+					"id": "122cf2d5-5868-4bd3-87c4-7e1b9d80cc11",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/restaurant?res_id=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "res_id",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"id": "3c722a7d-2dc5-40b7-b1f3-47bde2c86442",
+					"name": "Invalid res_id.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/restaurant?res_id=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "res_id",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get daily menu of a restaurant",
+			"id": "3e5593ee-a06f-44cf-9ec3-d79e3c63b064",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/dailymenu?res_id=-13169233",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"dailymenu"
+					],
+					"query": [
+						{
+							"key": "res_id",
+							"value": "-13169233",
+							"description": "(Required) id of restaurant whose details are requested"
+						}
+					]
+				},
+				"description": "Get daily menu using Zomato restaurant ID."
+			},
+			"response": [
+				{
+					"id": "e399120a-385f-46de-ab80-2ac3cdb92508",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/dailymenu?res_id=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"dailymenu"
+							],
+							"query": [
+								{
+									"key": "res_id",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"daily_menu\": {\n    \"daily_menu_id\": 6507624,\n    \"name\": \"Vinohradský pivovar\",\n    \"start_date\": \"2016-03-08 11:00\",\n    \"end_date\": \"016-03-08 15:00\",\n    \"dishes\": {\n      \"dish_id\": 104089345,\n      \"name\": \"Tatarák ze sumce s toustem\",\n      \"price\": \"49 Kč\"\n    }\n  }\n}"
+				},
+				{
+					"id": "ce576deb-35fe-4127-8d2d-90c23f68cd6b",
+					"name": "Invalid res_id.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/dailymenu?res_id=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"dailymenu"
+							],
+							"query": [
+								{
+									"key": "res_id",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get restaurant reviews.",
+			"id": "d4139406-cfad-430a-8717-43fcc4d00407",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/reviews?res_id=-13169233&start=-13169233&count=-13169233",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "res_id",
+							"value": "-13169233",
+							"description": "(Required) id of restaurant whose details are requested"
+						},
+						{
+							"key": "start",
+							"value": "-13169233",
+							"description": "fetch results after this offset"
+						},
+						{
+							"key": "count",
+							"value": "-13169233",
+							"description": "max number of results to retrieve"
+						}
+					]
+				},
+				"description": "Get restaurant reviews using the Zomato restaurant ID. Only 5 latest reviews are available under the Basic API plan."
+			},
+			"response": [
+				{
+					"id": "5d9cdef1-860d-4aee-a308-57842b5203a7",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/reviews?res_id=-13169233&start=-13169233&count=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "res_id",
+									"value": "-13169233"
+								},
+								{
+									"key": "start",
+									"value": "-13169233"
+								},
+								{
+									"key": "count",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"rating\": 83458021,\n  \"review_text\": \"The best latte I've ever had. It tasted a little sweet\",\n  \"id\": 24127336,\n  \"rating_color\": \"305D02\",\n  \"review_time_friendly\": \"2 months ago\",\n  \"rating_text\": \"Insane!\",\n  \"timestamp\": 1435507367,\n  \"likes\": 0,\n  \"user\": {\n    \"name\": \"John Doe\",\n    \"zomato_handle\": \"John\",\n    \"foodie_level\": \"Super Foodie\",\n    \"foodie_level_num\": 9,\n    \"foodie_color\": \"f58552\",\n    \"profile_url\": \"https://www.zomato.com/john\",\n    \"profile_deeplink\": \"zoma.to/u/1170245\",\n    \"profile_image\": \"string\"\n  },\n  \"comments_count\": 0\n}"
+				},
+				{
+					"id": "0cf453f4-6dc9-471b-a06b-b674270d997d",
+					"name": "Invalid res_id.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/reviews?res_id=-13169233&start=-13169233&count=-13169233",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "res_id",
+									"value": "-13169233"
+								},
+								{
+									"key": "start",
+									"value": "-13169233"
+								},
+								{
+									"key": "count",
+									"value": "-13169233"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Search for restaurant",
+			"id": "08bfd45d-c84e-4614-ab6d-251842ed84ff",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "(Required) your API key",
+						"key": "user-key",
+						"value": "eiusmod et dolore in laboris"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/search?entity_id=-13169233&entity_type=available&entity_type=available&q=eiusmod et dolore in laboris&lat=-98808562.94987081&lon=-98808562.94987081&start=-13169233&count=-13169233&cuisine=eiusmod et dolore in laboris&radius=-98808562.94987081&establishment_type=eiusmod et dolore in laboris&collection_id=eiusmod et dolore in laboris&category=eiusmod et dolore in laboris&sort=available&sort=available&order=available&order=available",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "entity_id",
+							"value": "-13169233",
+							"description": "location id"
+						},
+						{
+							"key": "entity_type",
+							"value": "available",
+							"description": "location type"
+						},
+						{
+							"key": "entity_type",
+							"value": "available",
+							"description": "location type"
+						},
+						{
+							"key": "q",
+							"value": "eiusmod et dolore in laboris",
+							"description": "query by city name"
+						},
+						{
+							"key": "lat",
+							"value": "-98808562.94987081",
+							"description": "latitude"
+						},
+						{
+							"key": "lon",
+							"value": "-98808562.94987081",
+							"description": "longitude"
+						},
+						{
+							"key": "start",
+							"value": "-13169233",
+							"description": "fetch results after this offset"
+						},
+						{
+							"key": "count",
+							"value": "-13169233",
+							"description": "max number of results to retrieve"
+						},
+						{
+							"key": "cuisine",
+							"value": "eiusmod et dolore in laboris",
+							"description": "list of cuisine id's separated by comma"
+						},
+						{
+							"key": "radius",
+							"value": "-98808562.94987081",
+							"description": "radius around (lat,lon); to define search area, defined in meters(M)"
+						},
+						{
+							"key": "establishment_type",
+							"value": "eiusmod et dolore in laboris",
+							"description": "estblishment id obtained from establishments call"
+						},
+						{
+							"key": "collection_id",
+							"value": "eiusmod et dolore in laboris",
+							"description": "collection id obtained from collections call"
+						},
+						{
+							"key": "category",
+							"value": "eiusmod et dolore in laboris",
+							"description": "category ids obtained from categories call"
+						},
+						{
+							"key": "sort",
+							"value": "available",
+							"description": "sort restaurants by .."
+						},
+						{
+							"key": "sort",
+							"value": "available",
+							"description": "sort restaurants by .."
+						},
+						{
+							"key": "order",
+							"value": "available",
+							"description": "used with 'sort' parameter to define ascending / descending"
+						},
+						{
+							"key": "order",
+							"value": "available",
+							"description": "used with 'sort' parameter to define ascending / descending"
+						}
+					]
+				},
+				"description": "The location input can be specified using Zomato location ID or coordinates. Cuisine / Establishment / Collection IDs can be obtained from respective api calls. Get up to 100 restaurants by changing the 'start' and 'count' parameters with the maximum value of count being 20. Partner Access is required to access photos and reviews."
+			},
+			"response": [
+				{
+					"id": "54a09911-5a66-4200-9614-5f92de06672f",
+					"name": "Successful operation.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/search?entity_id=-13169233&entity_type=available&entity_type=available&q=eiusmod et dolore in laboris&lat=-98808562.94987081&lon=-98808562.94987081&start=-13169233&count=-13169233&cuisine=eiusmod et dolore in laboris&radius=-98808562.94987081&establishment_type=eiusmod et dolore in laboris&collection_id=eiusmod et dolore in laboris&category=eiusmod et dolore in laboris&sort=available&sort=available&order=available&order=available",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "entity_id",
+									"value": "-13169233"
+								},
+								{
+									"key": "entity_type",
+									"value": "available"
+								},
+								{
+									"key": "entity_type",
+									"value": "available"
+								},
+								{
+									"key": "q",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "start",
+									"value": "-13169233"
+								},
+								{
+									"key": "count",
+									"value": "-13169233"
+								},
+								{
+									"key": "cuisine",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "radius",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "establishment_type",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "collection_id",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "category",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "sort",
+									"value": "available"
+								},
+								{
+									"key": "sort",
+									"value": "available"
+								},
+								{
+									"key": "order",
+									"value": "available"
+								},
+								{
+									"key": "order",
+									"value": "available"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"id": "f1010da9-a7c5-4d8a-94e2-cea92c9a68f0",
+					"name": "Failed.",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) your API key",
+								"key": "user-key",
+								"value": "eiusmod et dolore in laboris"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/search?entity_id=-13169233&entity_type=available&entity_type=available&q=eiusmod et dolore in laboris&lat=-98808562.94987081&lon=-98808562.94987081&start=-13169233&count=-13169233&cuisine=eiusmod et dolore in laboris&radius=-98808562.94987081&establishment_type=eiusmod et dolore in laboris&collection_id=eiusmod et dolore in laboris&category=eiusmod et dolore in laboris&sort=available&sort=available&order=available&order=available",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "entity_id",
+									"value": "-13169233"
+								},
+								{
+									"key": "entity_type",
+									"value": "available"
+								},
+								{
+									"key": "entity_type",
+									"value": "available"
+								},
+								{
+									"key": "q",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "lat",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "lon",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "start",
+									"value": "-13169233"
+								},
+								{
+									"key": "count",
+									"value": "-13169233"
+								},
+								{
+									"key": "cuisine",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "radius",
+									"value": "-98808562.94987081"
+								},
+								{
+									"key": "establishment_type",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "collection_id",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "category",
+									"value": "eiusmod et dolore in laboris"
+								},
+								{
+									"key": "sort",
+									"value": "available"
+								},
+								{
+									"key": "sort",
+									"value": "available"
+								},
+								{
+									"key": "order",
+									"value": "available"
+								},
+								{
+									"key": "order",
+									"value": "available"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"id": "3b47b9b3-d14e-4fa4-a36d-bbaae3122b3d",
+			"key": "baseUrl",
+			"value": "https://developers.zomato.com/api/v2.1",
+			"type": "string"
+		}
+	]
+}
