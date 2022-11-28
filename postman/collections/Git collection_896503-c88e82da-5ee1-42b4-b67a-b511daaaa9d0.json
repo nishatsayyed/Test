@@ -1,9 +1,141 @@
 {
 	"info": {
-		"_postman_id": "c88e82da-5ee1-42b4-b67a-b511daaaa9d0",
+		"_postman_id": "5e8c072c-a9b7-424b-b5e8-b4e1a99dcfb1",
 		"name": "Git collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "896503-c88e82da-5ee1-42b4-b67a-b511daaaa9d0"
+		"_uid": "20117414-5e8c072c-a9b7-424b-b5e8-b4e1a99dcfb1"
 	},
-	"item": []
+	"item": [
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "New Folder",
+					"item": [
+						{
+							"name": "New Request",
+							"id": "c735c3a0-1224-42e6-a1de-177a4d42a968",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "1a0ad1a5-4366-465f-a7fa-a927acbb21f9"
+				},
+				{
+					"name": "New Request",
+					"id": "04b30938-c334-433b-b2d4-7c5a128d5477",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "95be0d4f-7f91-468e-ac8b-e064c2e5e26c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "abcd",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "google.com?foo=bar",
+							"host": [
+								"google",
+								"com"
+							],
+							"query": [
+								{
+									"key": "foo",
+									"value": "bar",
+									"type": "text"
+								}
+							]
+						},
+						"description": "Hello request here there."
+					},
+					"response": [
+						{
+							"id": "0e68b9fb-9948-4232-961a-0423d2539942",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"cookie": []
+						},
+						{
+							"id": "13c3dc87-55fb-4469-91a2-54ce8a06d8fd",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"cookie": []
+						}
+					]
+				}
+			],
+			"id": "24b25724-4ccf-4047-a3ae-dd72daec708c"
+		},
+		{
+			"name": "New Request",
+			"id": "88cdcbc1-5fd5-44a6-af72-17ba5f24af54",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	]
 }
